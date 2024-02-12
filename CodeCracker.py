@@ -3,10 +3,9 @@ import string
 from timeit import default_timer as timer
 
 # reference: https://codepen.io/AfroDev/pen/emezKV
-# 8-digits code with characters 
 # Code Generator functions is for performance test
 
-characters = string.ascii_uppercase + string.ascii_lowercase + string.digits
+characters = string.digits + string.ascii_lowercase + string.ascii_uppercase 
 
 
 code = ''
