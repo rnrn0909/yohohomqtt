@@ -4,6 +4,7 @@ import logging
 import time
 import json
 from datetime import datetime
+import datetime
 
 # address
 # 192.168.0.10 : Main controller SSC
@@ -70,8 +71,9 @@ def on_disconnect(client, userdata, rc):
 def publish(client):
     msg_count = 0
     while not FLAG_EXIT:
-        now = datetime.now()
-        current_ts = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]
+        now = datetime.datetime.now()
+        utc_now = now.astimezone(datetime.timezone.utc)
+        current_ts = utc_now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]
         cts = str(current_ts) + 'Z'
         farbe = random.choice(COLOR)
         msg_dict = {
@@ -107,7 +109,6 @@ def run():
         publish(client)
     else:
         client.loop_stop()
-
 
 
 if __name__=='__main__':

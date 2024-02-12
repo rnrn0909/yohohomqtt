@@ -5,8 +5,6 @@ from paho.mqtt import client as mqtt_client
 import json
 
 
-# reference: https://github.com/emqx/MQTT-Client-Examples/blob/master/mqtt-client-Python3/sub_tcp.py 
-
 # address 
 # 192.168.0.10 : Main controller SSC
 # 192.168.0.11 : MPO
@@ -24,9 +22,9 @@ TOPIC = '#'
 
 def connect_mqtt():
     def on_message(client, userdata, msg):
-                print(f'Received `{msg.payload.decode()}` | `{msg.qos}` | `{msg.topic}`')
-                payload = json.loads(msg.payload.decode())
-                timestamp = payload["ts"]
+        print(f'Received `{msg.payload.decode()}` | `{msg.qos}` | `{msg.topic}`')
+        payload = json.loads(msg.payload.decode())
+        timestamp = payload["ts"]
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             logging.info(f'{client_id}: Connected flags {flags} | {rc}')
@@ -55,7 +53,6 @@ FIRST_RECONNECT_DELAY = 1
 RECONNECT_RATE = 2
 MAX_RECOONECT_COUNT = 12
 MAX_RECONNECT_DELAY = 60
-
 
 def on_disconnect(client, userdata, rc):
     logging.info('Disconnected with result code: %s', rc)

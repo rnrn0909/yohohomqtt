@@ -7,7 +7,6 @@ from timeit import default_timer as timer
 
 characters = string.digits + string.ascii_lowercase + string.ascii_uppercase 
 
-
 code = ''
 
 def CodeGen(chars = characters):
