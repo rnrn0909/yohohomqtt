@@ -4,7 +4,6 @@ import random
 from paho.mqtt import client as mqtt_client
 import json
 
-
 # address 
 # 192.168.0.10 : Main controller SSC
 # 192.168.0.11 : MPO
