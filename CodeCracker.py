@@ -30,8 +30,7 @@ def spliter(target):
         sp1 = target[:4]
         sp2 = target[4:8]
         sp3 = '0000'
-        sp4 = '0000'
-    
+        sp4 = '0000'   
     return sp1, sp2, sp3, sp4
 
 def Cracker4(part):
