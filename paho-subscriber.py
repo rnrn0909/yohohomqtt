@@ -24,6 +24,7 @@ def connect_mqtt():
         print(f'Received `{msg.payload.decode()}` | `{msg.qos}` | `{msg.topic}`')
         payload = json.loads(msg.payload.decode())
         timestamp = payload["ts"]
+
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
             logging.info(f'{client_id}: Connected flags {flags} | {rc}')
@@ -31,9 +32,9 @@ def connect_mqtt():
             client.connected_flag = True
             client.subscribe(TOPIC)
             client.on_message = on_message
-
         else:
             print("Failed to connect, return code %d\n", rc)
+            
     client = mqtt_client.Client(client_id)
     client.username_pw_set(username, password)
     client.on_connect = on_connect
