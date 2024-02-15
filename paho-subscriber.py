@@ -45,7 +45,6 @@ def connect_mqtt():
     except Exception as err:
         print('Error: ', err)
         global FLAG_EXIT
-        # conn.close()
         FLAG_EXIT = True
     return client
 
