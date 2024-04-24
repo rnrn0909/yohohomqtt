@@ -4,6 +4,7 @@ import logging
 import time
 import json
 from datetime import datetime
+import datetime
 
 # address
 # 192.168.0.10 : Main controller SSC
@@ -71,16 +72,17 @@ def on_disconnect(client, userdata, rc):
 def publish(client):
     msg_count = 0
     while not FLAG_EXIT:
-        now = datetime.now()
-        current_ts = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]
+        now = datetime.datetime.now()
+        utc_now = now.astimezone(datetime.timezone.utc)
+        current_ts = utc_now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]
         cts = str(current_ts) + 'Z'
         msg_dict = {
-                'active': 0, 
-                'code': 1,
-                'description': "",
-                'station': 'hbw', 
-                'ts':cts        
-                }
+            'active': 1, 
+            'code': 2,
+            'description': "",
+            'station': 'hbw', 
+            'ts':cts        
+        }
         msg = json.dumps(msg_dict)
         if not client.is_connected():
             logging.error(" P U B L I S H : MQTT client is not connected!")
@@ -94,8 +96,6 @@ def publish(client):
             print(f'Failed to send message to topic {PUB_TOPIC}')
         msg_count += 1
         time.sleep(0.3)
-
-
 
 def subscribe(client):
     def on_message(client, userdata, msg):
@@ -113,7 +113,6 @@ def run():
     else:
         client.loop_stop()
         print('Not connected. Check connectivity. ')
-
 
 
 if __name__=='__main__':

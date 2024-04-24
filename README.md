@@ -1,5 +1,5 @@
-# yohohomqtt
-
+# Silent-Sabotage
+Silent Sabotage: A Stealthy Control Logic Injection Attack in IIoT Systems
 
 Case study using Fischertechnik's Lernfabrik 4.0 (9V)
 
@@ -11,6 +11,6 @@ This repository includes
 
 
 #### Reference link: [here](https://github.com/emqx/MQTT-Client-Examples/blob/master/mqtt-client-Python3/sub_tcp.py)
+[Demo video](https://youtu.be/TcjYQrdDYVU?si=227YkhKzJrgyAgpy)
 
-
-
+<img src="https://github.com/rnrn0909/silent-sabotage/assets/57967202/74f6db25-91f4-4db5-9035-cf2c92c5170e" align="right" width="50" height="50">
